@@ -1,11 +1,14 @@
 # MyAngularApp
 
+## Installation
+Clone repository
+```
+git clone https://github.com/JuanPabloBC7/myAngularApp.git
+```
+
+
 ## Plugin Installations
 * `ng add @ng-bootstrap/ng-bootstrap`: Para instalar bootstrap en angular
-
-
-
-
 
 
 
