@@ -1,5 +1,15 @@
 # MyAngularApp
 
+## Plugin Installations
+* `ng add @ng-bootstrap/ng-bootstrap`: Para instalar bootstrap en angular
+
+
+
+
+
+
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.2.
 
 ## Development server
