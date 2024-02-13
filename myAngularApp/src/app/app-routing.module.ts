@@ -26,9 +26,9 @@ const routes: Routes = [
           import('./views/dashboard/dashboard.module').then((m) => m.DashboardModule)
       },
       {
-        path: 'dashboard',
+        path: 'formulario-de-usuario',
         loadChildren: () =>
-          import('./views/dashboard/dashboard.module').then((m) => m.DashboardModule)
+          import('./views/admin/user-manage/user-manage-routing.module').then((m) => m.UserManageRoutingModule)
       },
       {
         path: 'theme',

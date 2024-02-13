@@ -11,13 +11,13 @@ export const navItems: INavData[] = [
     }
   },
   {
-    title: true,
-    name: 'Theme'
+    name: 'Formulario de Usuario',
+    url: '/formulario-de-usuario',
+    iconComponent: { name: 'cil-file' }
   },
   {
-    name: 'User Form',
-    url: '/User/Form',
-    iconComponent: { name: 'cil-file' }
+    title: true,
+    name: 'Theme'
   },
   {
     name: 'Colors',
