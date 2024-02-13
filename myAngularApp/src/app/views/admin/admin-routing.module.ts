@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AdministrarUsuarioComponent } from './administrar-usuario.component';
+import { AdministrarUsuarioComponent } from '../admin/administrar-usuario/administrar-usuario.component'
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'administrar-usuario',
     component: AdministrarUsuarioComponent,
     data: {
-      title: $localize`administrar-usuario`
-    }
+      title: 'administrar-usuario'
+    },
   }
 ];
 
@@ -17,4 +17,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AdministrarUsuarioRoutingModule { }
+export class AdminRoutingModule { }

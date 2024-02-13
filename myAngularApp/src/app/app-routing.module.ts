@@ -26,9 +26,9 @@ const routes: Routes = [
           import('./views/dashboard/dashboard.module').then((m) => m.DashboardModule)
       },
       {
-        path: 'administrar-usuario',
+        path: 'admin',
         loadChildren: () =>
-          import('./views/admin/administrar-usuario/administrar-usuario.module').then((m) => m.AdministrarUsuarioModule)
+          import('./views/admin/admin.module').then((m) => m.AdminModule)
       },
       {
         path: 'theme',

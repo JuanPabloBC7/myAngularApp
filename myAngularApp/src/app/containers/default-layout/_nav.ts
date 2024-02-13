@@ -11,9 +11,15 @@ export const navItems: INavData[] = [
     }
   },
   {
-    name: 'Administrar Usuario',
-    url: '/administrar-usuario',
-    iconComponent: { name: 'cil-user' }
+    name: 'Admin',
+    url: '/admin',
+    iconComponent: { name: 'cil-user' },
+    children: [
+      {
+        name: 'Administrar Usuario',
+        url: '/admin/administrar-usuario'
+      },
+    ]
   },
   {
     title: true,
