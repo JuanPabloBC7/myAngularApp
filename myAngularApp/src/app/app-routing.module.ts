@@ -26,7 +26,7 @@ const routes: Routes = [
           import('./views/dashboard/dashboard.module').then((m) => m.DashboardModule)
       },
       {
-        path: 'formulario-de-usuario',
+        path: 'administrar-usuario',
         loadChildren: () =>
           import('./views/admin/administrar-usuario/administrar-usuario.module').then((m) => m.AdministrarUsuarioModule)
       },
