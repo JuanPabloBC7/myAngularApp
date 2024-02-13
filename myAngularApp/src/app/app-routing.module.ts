@@ -28,7 +28,7 @@ const routes: Routes = [
       {
         path: 'formulario-de-usuario',
         loadChildren: () =>
-          import('./views/admin/user-manage/user-manage-routing.module').then((m) => m.UserManageRoutingModule)
+          import('./views/admin/administrar-usuario/administrar-usuario.module').then((m) => m.AdministrarUsuarioModule)
       },
       {
         path: 'theme',

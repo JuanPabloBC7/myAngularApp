@@ -11,9 +11,9 @@ export const navItems: INavData[] = [
     }
   },
   {
-    name: 'Formulario de Usuario',
-    url: '/formulario-de-usuario',
-    iconComponent: { name: 'cil-file' }
+    name: 'Administrar Usuario',
+    url: '/administrar-usuario',
+    iconComponent: { name: 'cil-user' }
   },
   {
     title: true,
