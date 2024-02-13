@@ -12,7 +12,9 @@ npm i
 ```
 
 ## Plugin Installations
-* `ng add @ng-bootstrap/ng-bootstrap`: Para instalar bootstrap en angular
+* [Bootstrap](https://getbootstrap.com/)
+  - ```ng add @ng-bootstrap/ng-bootstrap``` Para instalar bootstrap en angular
+* [FontAwesome](https://fontawesome.com/)
 
 
 
