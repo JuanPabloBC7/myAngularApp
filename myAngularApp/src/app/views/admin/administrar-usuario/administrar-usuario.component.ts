@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+import { Usuario } from '../../../shared/modelos/modelos'
+
 @Component({
   selector: 'app-administrar-usuario',
   standalone: true,
@@ -13,15 +15,19 @@ export class AdministrarUsuarioComponent {
 
   constructor() { }
 
-  persona = {
+  persona: Usuario = {
     id: 0,
-    name: '', 
-    age: undefined,
-    mail: undefined
+    nombre: '',
+    edad: undefined,
+    correo: undefined
   };
 
   async CreateUser() {
     console.log(this.persona)
+
+    this.persona.nombre = '';
+    this.persona.edad = undefined;
+    this.persona.correo = '';
   }
 
   focus01: boolean = false;
