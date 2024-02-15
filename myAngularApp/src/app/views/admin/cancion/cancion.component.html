@@ -1,0 +1,83 @@
+<div class="row">
+  <div class="col-12">
+    <!-- <app-docs-callout href="forms/validation" name="Validation"></app-docs-callout> -->
+  </div>
+  <div class="col-12">
+    <div class="card">
+      <h5 class="card-header"><i class="fas fa-music me-2"></i>Canción</h5>
+      <div class="card-body">
+        <!-- <h5 class="card-title">Special title treatment</h5> -->
+        <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+        <form #personaForm="ngForm" (ngSubmit)="CreateCancion()">
+          <div class="row">
+            <div class="col-sm-12 col-md-4 col-lg-4 mb-2">
+              <div class="form-group">
+                <label for="nombre" class="form-label">Nombre de la Canción</label>
+    
+                <input type="text" id="nombre" name="nombre" #nombre="ngModel" [(ngModel)]="cancion.nombre"
+                class="form-control" placeholder="Ingrese su nombre"
+                [ngClass]="{ 'is-invalid': nombre.invalid && (nombre.dirty || nombre.touched), 'is-valid': nombre.dirty && nombre.valid }" 
+                (focus)="focus01 = true"
+                (blur)="focus01 = false"
+                required>
+    
+                <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="invalid-feedback">
+                  <div *ngIf="nombre.errors?.['required']">Campo requerido</div>
+                </div>
+                <div *ngIf="nombre.valid" class="valid-feedback">Campo válido</div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4 mb-2">
+              <div class="form-group">
+                <label for="genero" class="form-label">Genero</label>
+    
+                <select class="form-select" id="genero" name="genero" #genero="ngModel" [(ngModel)]="cancion.genero"
+                [ngClass]="{ 'is-invalid': genero.invalid && (genero.dirty || genero.touched), 'is-valid': genero.dirty && genero.valid }" 
+                (focus)="focus02 = true"
+                (blur)="focus02 = false"
+                required>
+                  <option value="undifine">Open this select menu</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+    
+                <div *ngIf="genero.invalid && (genero.dirty || genero.touched)" class="invalid-feedback">
+                  <div *ngIf="genero.errors?.['required']">Campo requerido</div>
+                </div>
+                <div *ngIf="genero.valid" class="valid-feedback">Campo válido</div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4 mb-2">
+              <div class="form-group">
+                <label for="artista" class="form-label">Artista</label>
+                
+                <select class="form-select" id="artista" name="artista" #artista="ngModel" [(ngModel)]="cancion.artista"
+                [ngClass]="{ 'is-invalid': artista.invalid && (artista.dirty || artista.touched), 'is-valid': artista.dirty && artista.valid }" 
+                (focus)="focus03 = true"
+                (blur)="focus03 = false"
+                required>
+                  <option value="undifine">Open this select menu</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+    
+                <div *ngIf="artista.invalid && (artista.dirty || artista.touched)" class="invalid-feedback">
+                  <div *ngIf="artista.errors?.['required']">Campo requerido</div>
+                  <div *ngIf="artista.errors?.['email']">Campo debe ser correcto</div>
+                </div>
+                <div *ngIf="artista.valid" class="valid-feedback">Campo válido</div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12 text-center mb-2">
+              <button type="submit" id="guardarInformacion" name="guardarInformacion" [disabled]="personaForm.invalid" class="btn btn-primary btn-icon my-2">
+                <i class="fas fa-save me-2"></i>Guardar Información
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

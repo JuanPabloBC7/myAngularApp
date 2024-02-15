@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-12">
+    <!-- <app-docs-callout href="forms/validation" name="Validation"></app-docs-callout> -->
+  </div>
+  <div class="col-12">
+    <div class="card">
+      <h5 class="card-header"><i class="fas fa-user-circle me-2"></i>Artista</h5>
+      <div class="card-body">
+        <!-- <h5 class="card-title">Special title treatment</h5> -->
+        <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+        <form #personaForm="ngForm" (ngSubmit)="CreateArtista()">
+          <div class="row">
+            <div class="col-sm-12 col-md-4 col-lg-4 mb-2">
+              <div class="form-group">
+                <label for="nombre" class="form-label">Nombre del Artista</label>
+    
+                <input type="text" id="nombre" name="nombre" #nombre="ngModel" [(ngModel)]="artista.nombre"
+                class="form-control" placeholder="Ingrese el nombre"
+                [ngClass]="{ 'is-invalid': nombre.invalid && (nombre.dirty || nombre.touched), 'is-valid': nombre.dirty && nombre.valid }" 
+                (focus)="focus01 = true"
+                (blur)="focus01 = false"
+                required>
+    
+                <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="invalid-feedback">
+                  <div *ngIf="nombre.errors?.['required']">Campo requerido</div>
+                </div>
+                <div *ngIf="nombre.valid" class="valid-feedback">Campo válido</div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4 mb-2">
+              <div class="form-group">
+                <label for="fechaDeNacimiento" class="form-label">Fecha de Nacimiento</label>
+    
+                <input type="date" id="fechaDeNacimiento" name="fechaDeNacimiento" #fechaDeNacimiento="ngModel" [(ngModel)]="artista.fechaDeNacimiento"
+                class="form-control" placeholder="Ingrese su fechaDeNacimiento"
+                [ngClass]="{ 'is-invalid': fechaDeNacimiento.invalid && (fechaDeNacimiento.dirty || fechaDeNacimiento.touched), 'is-valid': fechaDeNacimiento.dirty && fechaDeNacimiento.valid }" 
+                (focus)="focus02 = true"
+                (blur)="focus02 = false"
+                required>
+    
+                <div *ngIf="fechaDeNacimiento.invalid && (fechaDeNacimiento.dirty || fechaDeNacimiento.touched)" class="invalid-feedback">
+                  <div *ngIf="fechaDeNacimiento.errors?.['required']">Campo requerido</div>
+                </div>
+                <div *ngIf="fechaDeNacimiento.valid" class="valid-feedback">Campo válido</div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12 text-center mb-2">
+              <button type="submit" id="guardarInformacion" name="guardarInformacion" [disabled]="personaForm.invalid" class="btn btn-primary btn-icon my-2">
+                <i class="fas fa-save me-2"></i>Guardar Información
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

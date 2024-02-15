@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-12">
+    <!-- <app-docs-callout href="forms/validation" name="Validation"></app-docs-callout> -->
+  </div>
+  <div class="col-12">
+    <div class="card">
+      <h5 class="card-header"><i class="fas fa-compact-disc me-2"></i>Genero Musical</h5>
+      <div class="card-body">
+        <!-- <h5 class="card-title">Special title treatment</h5> -->
+        <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+        <form #personaForm="ngForm" (ngSubmit)="CreateGeneroMusical()">
+          <div class="row">
+            <div class="col-sm-12 col-md-4 col-lg-4 mb-2">
+              <div class="form-group">
+                <label for="clasificacion" class="form-label">Clasificación</label>
+    
+                <input type="text" id="clasificacion" name="clasificacion" #clasificacion="ngModel" [(ngModel)]="generoMusical.clasificacion"
+                class="form-control" placeholder="Ingrese la clasificación"
+                [ngClass]="{ 'is-invalid': clasificacion.invalid && (clasificacion.dirty || clasificacion.touched), 'is-valid': clasificacion.dirty && clasificacion.valid }" 
+                (focus)="focus01 = true"
+                (blur)="focus01 = false"
+                required>
+    
+                <div *ngIf="clasificacion.invalid && (clasificacion.dirty || clasificacion.touched)" class="invalid-feedback">
+                  <div *ngIf="clasificacion.errors?.['required']">Campo requerido</div>
+                </div>
+                <div *ngIf="clasificacion.valid" class="valid-feedback">Campo válido</div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12 text-center mb-2">
+              <button type="submit" id="guardarInformacion" name="guardarInformacion" [disabled]="personaForm.invalid" class="btn btn-primary btn-icon my-2">
+                <i class="fas fa-save me-2"></i>Guardar Información
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

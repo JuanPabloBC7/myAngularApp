@@ -15,17 +15,25 @@ export const navItems: INavData[] = [
     url: '/admin/administrar-usuario',
     iconComponent: { name: 'cil-user' },
   },
-  // {
-  //   name: 'Administrar Usuario',
-  //   url: '/admin/administrar-usuario',
-  //   iconComponent: { name: 'cil-user' },
-  //   children: [
-  //     {
-  //       name: 'Administrar Usuario',
-  //       url: '/admin/administrar-usuario'
-  //     },
-  //   ]
-  // },
+  {
+    name: 'Admin',
+    url: '/admin',
+    iconComponent: { name: 'cil-user' },
+    children: [
+      {
+        name: 'Cancion',
+        url: '/admin/cancion'
+      },
+      {
+        name: 'Genero Musical',
+        url: '/admin/genero-musical'
+      },
+      {
+        name: 'Artista',
+        url: '/admin/artista'
+      },
+    ]
+  },
   {
     title: true,
     name: 'Theme'
