@@ -1,30 +1,54 @@
 # Comandos utilizados con frecuencia
 * Instalar AngularCLI
-```npm install -g @angular/cli```
+```
+npm install -g @angular/cli
+```
 
 * Crear un nuevo proyecto
-```ng new my-first-project```
+```
+ng new <project-name>
+```
 
 * Correr proyecto
 ```
-cd my-first-project
+cd <project-name>
 ng serve
 ```
 
 * Crear un componente
-```ng generate component```
+```
+ng generate component <name>
+```
 
 * Crear un componente sin testing
-```ng generate component --skip-tests or --skipTests```
+```
+ng generate component <name> --skip-tests or --skipTests
+```
 
 * Crear un módulo
-```ng generate module```
+```
+ng generate module <name>
+```
 
 * Crear un módulo con ruteo
-```ng generate module --routing```
+```
+ng generate module <name> --routing
+```
+
+* Crear un servicio
+```
+ng generate service <name>
+```
+
+* Crear un servicio
+```
+ng generate service <name> --skip-tests or --skipTests
+```
 
 * Crear un ambientes
-```ng generate environments```
+```
+ng generate environments
+```
 
 
 
