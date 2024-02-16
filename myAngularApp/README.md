@@ -1,3 +1,55 @@
+# Comandos utilizados con frecuencia
+* Instalar AngularCLI
+```npm install -g @angular/cli```
+
+* Crear un nuevo proyecto
+```ng new my-first-project```
+
+* Correr proyecto
+```
+cd my-first-project
+ng serve
+```
+
+* Crear un componente
+```ng generate component```
+
+* Crear un componente sin testing
+```ng generate component --skip-tests or --skipTests```
+
+* Crear un módulo
+```ng generate module```
+
+* Crear un módulo con ruteo
+```ng generate module --routing```
+
+* Crear un ambientes
+```ng generate environments```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 [![@coreui angular](https://img.shields.io/badge/@coreui%20-angular-lightgrey.svg?style=flat-square)](https://github.com/coreui/angular)
 [![npm-coreui-angular][npm-coreui-angular-badge]][npm-coreui-angular]
 [![NPM downloads][npm-coreui-angular-download]][npm-coreui-angular]  
