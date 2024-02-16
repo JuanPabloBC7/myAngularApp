@@ -362,6 +362,67 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiArtistaArtista extends Schema.CollectionType {
+  collectionName: 'artistas';
+  info: {
+    singularName: 'artista';
+    pluralName: 'artistas';
+    displayName: 'Artista';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    nombre: Attribute.String;
+    fechaDeNacimiento: Attribute.Date;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::artista.artista',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::artista.artista',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiGeneroMusicalGeneroMusical extends Schema.CollectionType {
+  collectionName: 'genero_musicals';
+  info: {
+    singularName: 'genero-musical';
+    pluralName: 'genero-musicals';
+    displayName: 'Genero Musical';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    clasificacion: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::genero-musical.genero-musical',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::genero-musical.genero-musical',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPersonaPersona extends Schema.CollectionType {
   collectionName: 'personas';
   info: {
@@ -823,6 +884,8 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::artista.artista': ApiArtistaArtista;
+      'api::genero-musical.genero-musical': ApiGeneroMusicalGeneroMusical;
       'api::persona.persona': ApiPersonaPersona;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;

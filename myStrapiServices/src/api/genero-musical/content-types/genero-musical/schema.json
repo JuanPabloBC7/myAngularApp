@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "genero_musicals",
+  "info": {
+    "singularName": "genero-musical",
+    "pluralName": "genero-musicals",
+    "displayName": "Genero Musical"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "clasificacion": {
+      "type": "string"
+    }
+  }
+}
