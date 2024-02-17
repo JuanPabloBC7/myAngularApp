@@ -34,22 +34,27 @@ npm install cors
 npm install -g typescript
 ```
 
-  - Crear el archivo de configuración para typescript
+  * Crear el archivo de configuración para typescript
 ```
 tsc --init
 ```
 
-  - Para automatizar la traducción de código constante es necesario escribir `"build": "tsc -w",` en el archivo ```package.json``` en el apartado de `"scripts":`
+  * Para automatizar la traducción de código constante es necesario escribir `"build": "tsc -w",` en el archivo `package.json` en el apartado de `"scripts":`
 ```
 "build": "tsc -w",
 ```
 
-  - Para ejecutar constantemente los cambios, en lugar de utiilzar `tsc`
+  * Para ejecutar constantemente los cambios, en lugar de utiilzar `tsc`
 ```
 npm run build
 ```
 
-* Instalar nodemon (permite instalar por aparte por -D solamente cuando se desarrollen la aplicación)
+* Instalar nodemon (permite escuchar constantemente el código para saber en que momento ha cambiado, y se puede instalar por aparte al colocar la `-D`, lo que nos permite utilizar solamente cuando se desarrolle la aplicación)
 ```
 npm install nodemon -D
 ```
+
+  * Para automatizar la consatante escucha del cambio de código, es necesario colocar `"dev": "nodemon build/index.js"` dentro del archivo `package.json` en el apartado de `"scripts":`
+  ```
+  "dev": "nodemon build/index.js"
+  ```
