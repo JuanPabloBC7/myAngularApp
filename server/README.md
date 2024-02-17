@@ -35,19 +35,19 @@ npm install -g typescript
 ```
 
   * Crear el archivo de configuración para typescript
-```
-tsc --init
-```
+  ```
+  tsc --init
+  ```
 
   * Para automatizar la traducción de código constante es necesario escribir `"build": "tsc -w",` en el archivo `package.json` en el apartado de `"scripts":`
-```
-"build": "tsc -w",
-```
+  ```
+  "build": "tsc -w",
+  ```
 
   * Para ejecutar constantemente los cambios, en lugar de utiilzar `tsc`
-```
-npm run build
-```
+  ```
+  npm run build
+  ```
 
 * Instalar nodemon (permite escuchar constantemente el código para saber en que momento ha cambiado, y se puede instalar por aparte al colocar la `-D`, lo que nos permite utilizar solamente cuando se desarrolle la aplicación)
 ```
@@ -58,3 +58,20 @@ npm install nodemon -D
   ```
   "dev": "nodemon build/index.js"
   ```
+
+  * Para ejecutar constantemente la aplicación
+  ```
+  npm run dev
+  ```
+
+* Instalar types para que typescript me devuelva el autocompletado
+```
+npm i @types/express -D
+npm i @types/morgan -D
+npm i @types/cors -D
+```
+
+
+
+
+https://www.youtube.com/watch?v=lxYB79ANJM8
