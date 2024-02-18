@@ -1,35 +1,100 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const morgan_1 = __importDefault(require("morgan"));
-const cors_1 = __importDefault(require("cors"));
-const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
-const musicaRoutes_1 = __importDefault(require("./routes/musicaRoutes"));
-class Server {
-    constructor() {
-        this.app = (0, express_1.default)();
-        this.config();
-        this.routes();
+const express = require('express');
+const mysql = require('mysql');
+const bodyParser = require('body-parser');
+
+const app = express()
+
+app.use(function(req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', '*');
+  next();
+});
+
+app.use(bodyParser.json());
+
+const PUERTO = 3000
+
+const conection = mysql.createConnection({
+  host: 'localhost',
+  database: 'db_musica',
+  user: 'root',
+  password: 'root'
+});
+
+app.listen(PUERTO, () => {
+  console.log(`Server running on port: http://localhost:${PUERTO}`);
+});
+
+conection.connect(error => {
+  if(error) throw error
+  console.log('Conexion exitosa a base de datos');
+});
+
+app.get('/', (req, res) => {
+  res.send('API');
+});
+
+app.get('/artistas', (req, res) => {
+  const query = 'SELECT * FROM db_musica.artistas';
+  conection.query(query, (error, resultado) => {
+    if (error) return console.error(error.message)
+
+    if (resultado.length > 0) {
+      res.json(resultado)
+    } else {
+      res.json('no hay registros')
     }
-    config() {
-        this.app.set('port', process.env.PORT || 3000);
-        this.app.use((0, morgan_1.default)('dev'));
-        this.app.use((0, cors_1.default)());
-        this.app.use(express_1.default.json());
-        this.app.use(express_1.default.urlencoded({ extended: false }));
+  });
+});
+
+app.get('/artista/:id', (req, res) => {
+  const {id} = req.params;
+
+  const query = `SELECT * FROM db_musica.artistas WHERE id = ${id}`;
+  conection.query(query, (error, resultado) => {
+    if (error) return console.error(error.message)
+
+    if (resultado.length > 0) {
+      res.json(resultado)
+    } else {
+      res.json('no hay registros')
     }
-    routes() {
-        this.app.use('/', indexRoutes_1.default);
-        this.app.use('/api/musica', musicaRoutes_1.default);
-    }
-    start() {
-        this.app.listen(this.app.get('port'), () => {
-            console.log('Server on port', 'http://localhost:' + this.app.get('port'));
-        });
-    }
-}
-const server = new Server();
-server.start();
+  });
+});
+
+app.post('/artista', (req, res) => {
+  const artista = {
+    nombre: req.body.nombre,
+    fechaDeNacimiento: req.body.fechaDeNacimiento
+  }
+
+  const query = `INSERT INTO artistas SET ?`;
+  conection.query(query, artista, (error, resultado) => {
+    if (error) return console.error(error.message);
+
+    res.json('artista insertado correctamente');
+  });
+});
+
+app.put('/artista/:id', (req, res) => {
+  const {id} = req.params;
+  const {nombre, fechaDeNacimiento} = req.body
+
+  const query = `UPDATE artistas SET nombre='${nombre}', fechaDeNacimiento='${fechaDeNacimiento}' WHERE id='${id}'`;
+  conection.query(query, (error, resultado) => {
+    if (error) return console.error(error.message);
+
+    res.json('artista actualizado correctamente');
+  });
+});
+
+app.delete('/artista/:id', (req, res) => {
+  const {id} = req.params;
+
+  const query = `DELETE FROM artistas WHERE id='${id}'`;
+  conection.query(query, (error, resultado) => {
+    if (error) return console.error(error.message);
+
+    res.json('artista eliminado correctamente');
+  });
+});

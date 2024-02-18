@@ -1,7 +1,7 @@
 # Comandos utilizados con frecuencia
 * crea un package.json
 ```
-npm init --yes
+npm init
 ```
 
 * Instalar express (framework de NodeJs)
@@ -9,15 +9,38 @@ npm init --yes
 npm install express
 ```
 
-* Instalar morgan (permite ver en consola, las solicitudes del cliente)
+* Instalar body-parser
 ```
-npm install morgan
+npm install body-parser
 ```
 
 * Instalar mysql (permite la conexion de mysql con NodeJs)
 ```
 npm install mysql
 ```
+
+* Instalar nodemon (permite escuchar constantemente el código para saber en que momento ha cambiado, y se puede instalar por aparte al colocar la `-D`, lo que nos permite utilizar solamente cuando se desarrolle la aplicación)
+```
+npm install nodemon -D
+```
+
+  * Para automatizar la consatante escucha del cambio de código, es necesario colocar `"dev": "nodemon build/index.js"` dentro del archivo `package.json` en el apartado de `"scripts":`
+  ```
+  "dev": "nodemon build/index.js"
+  ```
+
+  * Para ejecutar constantemente la aplicación
+  ```
+  npm run dev
+  ```
+
+
+
+
+
+
+
+
 
 * Instalar promise-mysql (permite instalar la conexion de mysql con promesas `async away`)
 ```
@@ -49,29 +72,16 @@ npm install -g typescript
   npm run build
   ```
 
-* Instalar nodemon (permite escuchar constantemente el código para saber en que momento ha cambiado, y se puede instalar por aparte al colocar la `-D`, lo que nos permite utilizar solamente cuando se desarrolle la aplicación)
-```
-npm install nodemon -D
-```
-
-  * Para automatizar la consatante escucha del cambio de código, es necesario colocar `"dev": "nodemon build/index.js"` dentro del archivo `package.json` en el apartado de `"scripts":`
-  ```
-  "dev": "nodemon build/index.js"
-  ```
-
-  * Para ejecutar constantemente la aplicación
-  ```
-  npm run dev
-  ```
-
 * Instalar types para que typescript me devuelva el autocompletado
 ```
 npm i @types/express -D
 npm i @types/morgan -D
 npm i @types/cors -D
+npm i @types/mysql -D
 ```
 
 
 
 
 https://www.youtube.com/watch?v=lxYB79ANJM8
+1:24:49 / 3:09:42
