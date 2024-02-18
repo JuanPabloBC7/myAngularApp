@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { Router, request } from "express";
 import musicaController from '../controllers/musicaControllers';
 
 class MusicaRoutes {
@@ -10,7 +10,11 @@ class MusicaRoutes {
   }
 
   config(): void {
-    this.router.get('/', musicaController.musica);
+    this.router.get('/', musicaController.getArtistas);
+    this.router.get('/:id', musicaController.getArtista);
+    this.router.post('/', musicaController.createArtista);
+    this.router.put('/:id', musicaController.update);
+    this.router.delete('/:id', musicaController.delete);
   }
 }
 

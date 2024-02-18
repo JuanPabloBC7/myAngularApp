@@ -11,7 +11,11 @@ class MusicaRoutes {
         this.config();
     }
     config() {
-        this.router.get('/', musicaControllers_1.default.musica);
+        this.router.get('/', musicaControllers_1.default.getArtistas);
+        this.router.get('/:id', musicaControllers_1.default.getArtista);
+        this.router.post('/', musicaControllers_1.default.createArtista);
+        this.router.put('/:id', musicaControllers_1.default.update);
+        this.router.delete('/:id', musicaControllers_1.default.delete);
     }
 }
 const musicaRoutes = new MusicaRoutes();

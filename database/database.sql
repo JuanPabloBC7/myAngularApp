@@ -5,7 +5,7 @@ USE db_musica;
 CREATE TABLE artistas(
   id INT(11) NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(150),
-  fechaDeNacimiento TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  fechaDeNacimiento DATE,
   fechaCreacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id)
 );

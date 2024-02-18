@@ -12,10 +12,14 @@ const pool = mysql_1.default.createPool(keys_1.default.database);
 //       pool.releaseConnection(connection);
 //       console.log('DB is connected');
 //     });
-pool.getConnection((err, connection) => {
-    if (err)
-        throw err;
-    connection.release();
-    console.log('DB is connected');
+pool.getConnection()
+    .then(connection => {
+    pool.releaseConnection(connection);
+    console.log('DB is Connected');
 });
+// pool.getConnection((err, connection) => {
+//   if (err) throw err; 
+//   connection.release(); 
+//   console.log('DB is connected'); 
+// });
 exports.default = pool;
