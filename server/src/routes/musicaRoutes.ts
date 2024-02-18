@@ -1,4 +1,5 @@
 import { Router } from "express";
+import musicaController from '../controllers/musicaControllers';
 
 class MusicaRoutes {
 
@@ -9,7 +10,7 @@ class MusicaRoutes {
   }
 
   config(): void {
-    this.router.get('/', (req, res) => res.send('Musica'));
+    this.router.get('/', musicaController.musica);
   }
 }
 
