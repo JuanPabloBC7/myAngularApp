@@ -1,30 +1,74 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { Artista } from './../../../shared/modelos/artista';
+import { ArtistaModelo } from './../../../shared/modelos/artista';
+import { Observable } from 'rxjs';
+import { ArtistaService } from 'src/app/shared/services/artista.service';
+import { Router, ActivatedRoute, RouterModule} from '@angular/router';
 
 @Component({
   selector: 'app-artista',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './artista.component.html',
   styleUrl: './artista.component.scss'
 })
-export class ArtistaComponent {
-  constructor() { }
+export class ArtistaComponent implements OnInit{
+  id = "";
+  artistaForm = new ArtistaModelo("", "", "")
+  artistas: Observable<ArtistaModelo[]> | undefined
 
-  artista: Artista = {
-    id: 0,
-    nombre: '',
-    fechaDeNacimiento: ''
+  constructor(
+    private artistaServicio: ArtistaService,
+    private ruta: ActivatedRoute,
+    private router: Router
+  ) { }
+
+  ngOnInit(): void {
+    this.artistas = this.artistaServicio.obtenerArtistas();
+    this.id = this.ruta.snapshot.params['id'];
+
+    if (this.id!="0") {
+      console.log("Editar");
+      this.artistaServicio.obtenerArtista(this.id).subscribe(data => {
+        this.artistaForm = data[0];
+      });
+    } else {
+      console.log('Crear');
+    }
   }
 
   async CreateArtista() {
-    console.log(this.artista)
+    if (this.artistaForm.id) {
+      console.log("Editando");
+      this.artistaServicio.actualizarArtista(this.artistaForm).subscribe(data => {
+        console.log(data);
+        alert(data);
+        // Si quiero navegar a otro lado
+        // this.router.navigate(['/admin/artista']);
+        window.location.reload();
+      });
+      console.log("Editado");
+    } else {
+      console.log("Creando");
+      this.artistaServicio.agregarArtista(this.artistaForm).subscribe(data => {
+        console.log(data);
+        alert(data);
+        // this.router.navigate(['/admin/artista']);
+        window.location.reload();
+      });
+    }
 
-    this.artista.nombre = '';
-    this.artista.fechaDeNacimiento = '';
+    this.artistas = this.artistaServicio.obtenerArtistas();
+  }
+
+  DeleteArtista(id: string) {
+    this.artistaServicio.eliminarArtista(id).subscribe(data => {
+      console.log(data);
+    });
+
+    this.artistas = this.artistaServicio.obtenerArtistas();
   }
 
   focus01: boolean = false;

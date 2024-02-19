@@ -29,7 +29,7 @@ const routes: Routes = [
     },
   },
   {
-    path: 'artista',
+    path: 'artista/:id',
     component: ArtistaComponent,
     data: {
       title: 'Artista'

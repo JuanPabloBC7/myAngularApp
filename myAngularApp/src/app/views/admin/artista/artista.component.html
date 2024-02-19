@@ -14,7 +14,7 @@
               <div class="form-group">
                 <label for="nombre" class="form-label">Nombre del Artista</label>
     
-                <input type="text" id="nombre" name="nombre" #nombre="ngModel" [(ngModel)]="artista.nombre"
+                <input type="text" id="nombre" name="nombre" #nombre="ngModel" [(ngModel)]="artistaForm.nombre"
                 class="form-control" placeholder="Ingrese el nombre"
                 [ngClass]="{ 'is-invalid': nombre.invalid && (nombre.dirty || nombre.touched), 'is-valid': nombre.dirty && nombre.valid }" 
                 (focus)="focus01 = true"
@@ -31,7 +31,7 @@
               <div class="form-group">
                 <label for="fechaDeNacimiento" class="form-label">Fecha de Nacimiento</label>
     
-                <input type="date" id="fechaDeNacimiento" name="fechaDeNacimiento" #fechaDeNacimiento="ngModel" [(ngModel)]="artista.fechaDeNacimiento"
+                <input type="text" id="fechaDeNacimiento" name="fechaDeNacimiento" #fechaDeNacimiento="ngModel" [(ngModel)]="artistaForm.fechaDeNacimiento"
                 class="form-control" placeholder="Ingrese su fechaDeNacimiento"
                 [ngClass]="{ 'is-invalid': fechaDeNacimiento.invalid && (fechaDeNacimiento.dirty || fechaDeNacimiento.touched), 'is-valid': fechaDeNacimiento.dirty && fechaDeNacimiento.valid }" 
                 (focus)="focus02 = true"
@@ -51,6 +51,44 @@
             </div>
           </div>
         </form>
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Tabla de artistas</h5>
+            <p class="card-text">Descripción.</p>
+            <div class="table-responsive">
+              <table class="table table-sm table-striped table-hover table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Fecha de Nacimiento</th>
+                    <th scope="col">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let a of artistas | async; let i = index">
+                    <th scope="row">{{ i+1 }}</th>
+                    <td>{{ a.id }}</td>
+                    <td>{{ a.nombre }}</td>
+                    <td>{{ a.fechaDeNacimiento }}</td>
+                    <td>
+                      <div class="row text-center">
+                        <div class="col-6">
+                          <a class="btn" [routerLink]="['../', a.id]"><i class="fas fa-edit text-warning"></i></a>
+                        </div>
+                        <div class="col-6">
+                          <a class="btn" (click)="DeleteArtista(a.id)"><i class="fas fa-trash text-danger"></i></a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
