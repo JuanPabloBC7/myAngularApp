@@ -1,6 +1,6 @@
-CREATE DATABASE db_musica;
+CREATE DATABASE mysqldb;
 
-USE db_musica;
+USE mysqldb;
 
 CREATE TABLE artistas(
   id INT(11) NOT NULL AUTO_INCREMENT,

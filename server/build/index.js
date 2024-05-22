@@ -17,7 +17,7 @@ const PUERTO = 3000
 
 const conection = mysql.createConnection({
   host: 'localhost',
-  database: 'db_musica',
+  database: 'mysqldb',
   user: 'root',
   password: 'root'
 });
@@ -36,7 +36,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/artistas', (req, res) => {
-  const query = 'SELECT * FROM db_musica.artistas';
+  const query = 'SELECT * FROM mysqldb.artistas';
   conection.query(query, (error, resultado) => {
     if (error) return console.error(error.message)
 
@@ -51,7 +51,7 @@ app.get('/artistas', (req, res) => {
 app.get('/artista/:id', (req, res) => {
   const {id} = req.params;
 
-  const query = `SELECT * FROM db_musica.artistas WHERE id = ${id}`;
+  const query = `SELECT * FROM mysqldb.artistas WHERE id = ${id}`;
   conection.query(query, (error, resultado) => {
     if (error) return console.error(error.message)
 
